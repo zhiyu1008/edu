@@ -6,7 +6,7 @@
 				"navigationBarTitleText": "uni-app"
 			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -14,4 +14,12 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"uniIdRouter": {}
+	//easycom配置
+	// "easycom": {
+	// 	"autoscan": true, // autoscan是否开启自动扫描，开启后将会自动扫描符合components/组件名称/组件名称.vue目录结构的组件
+	// 	"custom": {
+	// 		//表示components路径下，所有的em-开头文件下，所有的em-开头的vue文件
+	// 		"em-(.*)": "@/components/$1/index-$1.vue" 
+	// 	}
+	// }
 }
