@@ -15,8 +15,10 @@
 <style>
 	/*每个页面公共css */
 	/* 引入公共样式表*/
-	@import url("@/common/index.css");
-	@import url("@/common/common.css");
+	@import url("@/common/styles/index.css");
+	@import url("@/common/styles/common.css");
 	/* 引入动画库 */
-	@import url("@/common/animate.min.css");
+	@import url("@/common/styles/animate.min.css");
+	/* 引入图标库 */
+	@import url("@/common/iconfont/iconfont.css");
 </style>
