@@ -1,8 +1,6 @@
 <template>
-	<view>
-		<view class="container">
-			000
-		</view>
+	<view class="container">
+		<i-search-bar></i-search-bar>
 	</view>
 </template>
 
