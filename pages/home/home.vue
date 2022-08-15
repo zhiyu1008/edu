@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="container">
-			000
+			home
 		</view>
 	</view>
 </template>
@@ -13,14 +13,12 @@
 				
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
-
+			
 		}
 	}
 </script>
 
 <style>
+
 </style>
