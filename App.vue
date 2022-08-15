@@ -16,5 +16,7 @@
 	/*每个页面公共css */
 	/* 引入公共样式表*/
 	@import url("@/common/index.css");
-	@import url("@/common/common.css")
+	@import url("@/common/common.css");
+	/* 引入动画库 */
+	@import url("@/common/animate.min.css");
 </style>
