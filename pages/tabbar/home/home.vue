@@ -7,7 +7,7 @@
 					<div class="user_info">
 						<div class="face"></div>
 						<div class="desc">
-							<h3>立即登录</h3>
+							<h3 @click="handleToLogin">立即登录</h3>
 							<p>登录解锁更多功能</p>
 						</div>
 					</div>
@@ -28,7 +28,11 @@
 			}
 		},
 		methods: {
-			
+			handleToLogin(){
+				uni.navigateTo({
+					url:"/pages/login/login"
+				})
+			}
 		}
 	}
 </script>
