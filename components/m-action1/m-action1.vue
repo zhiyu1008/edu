@@ -85,4 +85,8 @@ image{
 	width: 80rpx;
 	height: 60rpx;
 }
+p{
+	color: #333;
+	font-size: 28rpx
+}
 </style>
