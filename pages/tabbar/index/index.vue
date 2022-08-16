@@ -45,7 +45,6 @@
 			// 获取首页数据
 			async getIndexData() {
 				const response = await ShopModel.getIndexData()
-				console.log(response)
 				this.bannerList = response.data[1].data
 				this.navData = response.data[2].data
 				this.latestGroup=response.data[5].data
