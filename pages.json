@@ -22,15 +22,6 @@
 				}
 			}
 		}  
-        ,{
-            "path" : "components/m-action1/m-action1",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
