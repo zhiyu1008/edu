@@ -1,62 +1,25 @@
 {
 	"pages": [{
-			"path": "pages/index/index",
+			"path": "pages/tabbar/index/index",
 			"style": {
 				"app-plus":{
 					"titleNView":false
 				}
 			}
 		}, {
-			"path": "pages/learn/learn",
+			"path": "pages/tabbar/learn/learn",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
 	
 		}, {
-			"path": "pages/home/home",
+			"path": "pages/tabbar/home/home",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
 		}  
-       
-        ,{
-            "path" : "components/i-coupon/i-coupon",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "components/i-title-bar/i-title-bar",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "components/i-group-list/i-group-list",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "components/i-latest-group/i-latest-group",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -73,17 +36,17 @@
 			"borderStyle": "black",
 			"list": [{
 				"iconPath": "/static/tabbar/index.png",
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/tabbar/index/index",
 				"selectedIconPath": "/static/tabbar/index_selected.png",
 				"text": "首页"
 			}, {
 				"iconPath": "/static/tabbar/learn.png",
-				"pagePath": "pages/learn/learn",
+				"pagePath": "pages/tabbar/learn/learn",
 				"selectedIconPath": "/static/tabbar/learn_selected.png",
 				"text": "学习"
 			}, {
 				"iconPath": "/static/tabbar/my.png",
-				"pagePath": "pages/home/home",
+				"pagePath": "pages/tabbar/home/home",
 				"selectedIconPath": "/static/tabbar/my_selected.png",
 				"text": "我的"
 			}]
