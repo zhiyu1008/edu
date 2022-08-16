@@ -9,7 +9,6 @@ const app = new Vue({
 })
 app.$mount()
 // #endif
-
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 export function createApp() {
