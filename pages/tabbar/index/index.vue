@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="con">
 		<index-skeleton v-if="!loadingStatus"></index-skeleton>
 		<view class="animate__animated animate__fadeIn main_box">
 			<i-search-bar></i-search-bar>
@@ -47,6 +47,10 @@
 		onLoad() {
 			this.loadRequest()
 		},
+		// 下拉功能
+		onPullDownRefresh() {
+			this.loadRequest()
+		},
 		methods: {
 			async loadRequest() {
 				try {
@@ -54,8 +58,9 @@
 					await this.getCoupon()
 					await this.getGroup()
 					this.loadingStatus = true
+					uni.stopPullDownRefresh()
 				} catch (err) {
-
+					uni.stopPullDownRefresh()
 				}
 
 			},

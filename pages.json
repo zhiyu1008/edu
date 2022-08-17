@@ -4,7 +4,8 @@
 			"style": {
 				"app-plus":{
 					"titleNView":false
-				}
+				},
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/tabbar/learn/learn",
