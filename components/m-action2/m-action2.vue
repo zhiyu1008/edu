@@ -15,7 +15,7 @@
 				</div>
 				<uni-icons type="right" class="icon"></uni-icons>
 			</view class="li">
-			<view class="li">
+			<view class="li" @click="$goBack(2,'/pages/setting/setting')">
 				<div class="left">
 					<uni-icons custom-prefix="iconfont" color="#19b3f0" type="icon-shezhi" size="20"></uni-icons>			
 					<p>设置</p>
