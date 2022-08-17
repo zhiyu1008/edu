@@ -3,24 +3,24 @@
 		<view class="ul">
 			<view class="li">
 				<div class="left">
-					<image src="../../static/my/icon5.png" mode=""></image>
+					<uni-icons custom-prefix="iconfont" color="#19b3f0" type="icon-wodeyouhuijuan" size="20"></uni-icons>
 					<p>我的优惠卷</p>
 				</div>
-				<div class="right">></div>
+				<uni-icons type="right" class="icon"></uni-icons>
 			</view class="li">
 			<view class="li">
 				<div class="left">
-					<image src="../../static/my/icon6.png" mode=""></image>
+					<uni-icons custom-prefix="iconfont" color="#19b3f0" type="icon-changjianwentixiangguanwenti" size="20"></uni-icons>
 					<p>常见问题</p>
 				</div>
-				<div class="right">></div>
+				<uni-icons type="right" class="icon"></uni-icons>
 			</view class="li">
 			<view class="li">
 				<div class="left">
-					<image src="../../static/my/icon7.png" mode=""></image>
+					<uni-icons custom-prefix="iconfont" color="#19b3f0" type="icon-shezhi" size="20"></uni-icons>			
 					<p>设置</p>
 				</div>
-				<div class="right">></div>
+				<uni-icons type="right" class="icon"></uni-icons>
 			</view class="li">
 		</view>
 	</view>
@@ -60,15 +60,14 @@
 	list-style: none;
 	border-bottom: 1rpx solid #ddd;
 }
-.li image{
-	width: 45rpx;
-	height: 45rpx;
-}
 .li .left{
 	display: flex;
 	align-items: center;
 }
-.li .right{
+p{
+	margin-left: 20rpx;
+}
+.li .icon{
 	color: #aaa;
 	font-size: 35rpx
 }

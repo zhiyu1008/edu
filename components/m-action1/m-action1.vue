@@ -4,24 +4,24 @@
 			<image :src="item.url" mode=""></image>
 			<p>{{item.title}}</p>
 		</view> -->
-		<ul>
-			<li>
-				<image src="../../static/my/icon1.png" mode=""></image>
+		<div class="ul">
+			<div class="li">
+				<uni-icons custom-prefix="iconfont" type="icon-dingdan" size="20" color="#fec82b"></uni-icons>
 				<p>订单</p>
-			</li>
-			<li>
-				<image src="../../static/my/icon2.png" mode=""></image>
+			</div class="li">
+			<div class="li">
+				<uni-icons custom-prefix="iconfont" type="icon-xiaoxi" size="20" color="#fec82b"></uni-icons>
 				<p>消息</p>
-			</li>
-			<li>
-				<image src="../../static/my/icon3.png" mode=""></image>
+			</div class="li">
+			<div class="li">
+				<uni-icons custom-prefix="iconfont" type="icon-shoucang" size="20" color="#fec82b"></uni-icons>
 				<p>收藏</p>
-			</li>
-			<li>
-				<image src="../../static/my/icon4.png" mode=""></image>
+			</div class="li">
+			<div class="li">
+				<uni-icons custom-prefix="iconfont" type="icon-diannao" size="20" color="#fec82b"></uni-icons>
 				<p>在学</p>
-			</li>
-		</ul>
+			</div class="li">
+		</div class="ul">
 	</div>
 </template>
 
@@ -56,14 +56,11 @@
 </script>
 
 <style>
-	li{
+	.li{
 		list-style: none;
 		width: 25%;
+		text-align: center;
 	}
-li p{
-	position: relative;
-	left: 10rpx;
-}
 .action{
 		height: 150rpx;
 		width: 700rpx;
@@ -74,19 +71,16 @@ li p{
 		border-radius: 10rpx;
 		box-shadow: 0 0 8rpx 3rpx #ccc;
 	}
-ul{
+.ul{
 	width: 100%;
 	height: 100%;
 	display: flex;
 	align-items: center;
 	box-sizing: border-box;
 }
-image{
-	width: 80rpx;
-	height: 60rpx;
-}
 p{
-	color: #333;
-	font-size: 28rpx
+	color: #999;
+	font-size: 28rpx;
+	margin-top: 10rpx;
 }
 </style>

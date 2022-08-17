@@ -2,7 +2,7 @@
 	<div class="user_action">
 		<span>    </span>
 		<p>我的</p>
-		<span class="dian">. . .</span>
+		<uni-icons type="more-filled" color="#fff"></uni-icons>
 	</div>
 </template>
 
