@@ -2,7 +2,7 @@
 	<div class="user_action">
 		<span>    </span>
 		<p>我的</p>
-		<uni-icons type="more-filled" color="#fff"></uni-icons>
+		<uni-icons type="more-filled" color="#fff" @click="$goBack(2,'/pages/setting/setting')"></uni-icons>
 	</div>
 </template>
 
@@ -14,7 +14,7 @@
 			}
 		},
 		methods: {
-			
+
 		}
 	}
 </script>

@@ -2,7 +2,7 @@
 	<view class="nologin_box" v-if="token!==''">
 		<image src="@/static/noLogin.png" mode="" class="nologin_img"></image>
 		<p class="nologin_desc">登录后才可以查看我的学习哦</p>
-		<button class="nologin_btn">立即登录</button>
+		<button class="nologin_btn" @click="$goBack(2,'/pages/login/login')">立即登录</button>
 	</view>
 </template>
 

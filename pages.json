@@ -2,8 +2,8 @@
 	"pages": [{
 			"path": "pages/tabbar/index/index",
 			"style": {
-				"app-plus":{
-					"titleNView":false
+				"app-plus": {
+					"titleNView": false
 				},
 				"enablePullDownRefresh": true
 			}
@@ -14,23 +14,31 @@
 				"navigationBarBackgroundColor": "#fff",
 				"enablePullDownRefresh": false
 			}
-	
+
 		}, {
 			"path": "pages/tabbar/home/home",
 			"style": {
-				"app-plus":{
-					"titleNView":false
+				"app-plus": {
+					"titleNView": false
 				}
 			}
 		}, {
 			"path": "pages/login/login",
 			"style": {
-				"app-plus":{
-					"titleNView":false
+				"app-plus": {
+					"titleNView": false
 				}
 			}
-		}  
-    ],
+		},
+		{
+			"path": "pages/setting/setting",
+			"style": {
+				"navigationBarTitleText": "我的设置",
+				"navigationBarBackgroundColor": "#fff",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uniapp在线教育",
@@ -41,26 +49,26 @@
 		}
 	},
 	"tabBar": {
-			"color": "#BBBAC7",
-			"selectedColor": "#2C2C2C",
-			"borderStyle": "black",
-			"list": [{
-				"iconPath": "/static/tabbar/index.png",
-				"pagePath": "pages/tabbar/index/index",
-				"selectedIconPath": "/static/tabbar/index_selected.png",
-				"text": "首页"
-			}, {
-				"iconPath": "/static/tabbar/learn.png",
-				"pagePath": "pages/tabbar/learn/learn",
-				"selectedIconPath": "/static/tabbar/learn_selected.png",
-				"text": "学习"
-			}, {
-				"iconPath": "/static/tabbar/my.png",
-				"pagePath": "pages/tabbar/home/home",
-				"selectedIconPath": "/static/tabbar/my_selected.png",
-				"text": "我的"
-			}]
-		},
+		"color": "#BBBAC7",
+		"selectedColor": "#2C2C2C",
+		"borderStyle": "black",
+		"list": [{
+			"iconPath": "/static/tabbar/index.png",
+			"pagePath": "pages/tabbar/index/index",
+			"selectedIconPath": "/static/tabbar/index_selected.png",
+			"text": "首页"
+		}, {
+			"iconPath": "/static/tabbar/learn.png",
+			"pagePath": "pages/tabbar/learn/learn",
+			"selectedIconPath": "/static/tabbar/learn_selected.png",
+			"text": "学习"
+		}, {
+			"iconPath": "/static/tabbar/my.png",
+			"pagePath": "pages/tabbar/home/home",
+			"selectedIconPath": "/static/tabbar/my_selected.png",
+			"text": "我的"
+		}]
+	},
 	"uniIdRouter": {}
 	//easycom配置
 	// "easycom": {

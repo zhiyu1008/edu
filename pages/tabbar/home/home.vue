@@ -4,10 +4,10 @@
 			<div class="nav">
 				<m-nav></m-nav>
 				<div class="user">
-					<div class="user_info">
+					<div class="user_info"  @click="$goBack(2,'/pages/login/login')">
 						<div class="face"></div>
 						<div class="desc">
-							<h3 @click="handleToLogin">立即登录</h3>
+							<h3>立即登录</h3>
 							<p>登录解锁更多功能</p>
 						</div>
 					</div>
@@ -28,11 +28,6 @@
 			}
 		},
 		methods: {
-			handleToLogin(){
-				uni.navigateTo({
-					url:"/pages/login/login"
-				})
-			}
 		}
 	}
 </script>

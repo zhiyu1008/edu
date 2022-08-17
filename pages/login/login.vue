@@ -1,7 +1,7 @@
 <template>
 	<div class="box">
 		<div class="nav">
-			<uni-icons type="back" color="#fff" size="20"></uni-icons>
+			<uni-icons type="back" color="#fff" size="20" @click="$goBack(1,1)"></uni-icons>
 		</div>
 		<div class="login_box">
 			<p class="login">{{registerStatus?'注 册':passwordStatus?'找回密码':'登 录'}}</p>
