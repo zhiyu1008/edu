@@ -16,6 +16,7 @@
 			<p>当前版本</p>
 			<span>1.00</span>
 		</div>
+		<div class="logout" v-if="token">退出登录</div>
 	</view>
 </template>
 
@@ -23,7 +24,7 @@
 	export default {
 		data() {
 			return {
-				
+				token:''
 			}
 		},
 		methods: {
@@ -49,5 +50,16 @@
 }
 p{
 	font-size: 26rpx
+}
+.logout{
+	width: 690rpx;
+	margin: 45rpx 0 0 30rpx;
+	height: 75rpx;
+	background: #5ccc84;
+	color: #fff;
+	border-radius: 10rpx;
+	color: #fff;
+	line-height: 75rpx;
+	text-align: center;
 }
 </style>
