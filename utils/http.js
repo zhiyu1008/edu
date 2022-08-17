@@ -11,7 +11,6 @@ class Http {
     data = {},
     name = 'api1'
   }, options) {
-    uni.showLoading()
     try {
       const response = await uniToPromise('request', {
         url: APIConfig[name].baseURL + url,
@@ -22,10 +21,9 @@ class Http {
         method,
         ...options
       })
-      uni.hideLoading()
       // 请求成功
-      if (response.statusCode < 400) {
-        return response.data
+      if (response.statusCode < 400 ) {
+        return response.data.data
       }
       // token过期处理
       if (response.statusCode === 401) {
@@ -34,7 +32,7 @@ class Http {
       Http._showError(response.data.code, response.data.msg)
       return response
     } catch (error) {
-      uni.hideLoading()
+
       _showError(-1)
       console.log(error);
     }
