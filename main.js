@@ -7,6 +7,9 @@ import { goBack } from '@/utils/common.js' //公共方法
 Object.assign(Vue.prototype, {
 	'$goBack':goBack,
 })
+// 引入loadsh
+import _ from 'lodash'
+Vue.prototype.loadsh=_
 
 Vue.config.productionTip = false
 App.mpType = 'app'

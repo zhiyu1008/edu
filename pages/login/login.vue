@@ -79,8 +79,15 @@
 					'pass' ? this.handlePass() : this.handleTel()
 			},
 			// 注册功能
-			handleRegister(){
-				alert("reg")
+			async handleRegister(){
+				const data=this.loadsh.cloneDeep(this.loginForm)
+				// try{
+					
+				// }catch(err){
+				// 	console.log(err)
+				// }finally{
+				// 	uni.hideLoading()
+				// }
 			},
 			// 登录功能
 			handleLogin(){
