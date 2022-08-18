@@ -4,37 +4,37 @@
 			<uni-icons type="back" color="#fff" size="20" @click="$goBack(1,1)"></uni-icons>
 		</div>
 		<div class="login_box">
-			<p class="login">{{registerStatus?'注 册':passwordStatus?'找回密码':'登 录'}}</p>
-			<div class="input" v-if="!passwordStatus">
+			<p class="login">{{type==='reg'?'注 册':type==='pass'?'找回密码':type==='tel'?'绑定手机号':'登 录'}}</p>
+			<div class="input" v-if="type!=='pass'&&type!=='tel'">
 				<uni-icons type="person" class="icon"></uni-icons>
 				<input type="text" placeholder="请输入用户名">
 			</div>
-			<div class="input" v-if="passwordStatus">
+			<div class="input" v-if="type==='pass'||type==='tel'">
 				<uni-icons type="person" class="icon"></uni-icons>
 				<input type="text" placeholder="请输入手机号">
 			</div>
-			<div class="input" v-if="passwordStatus">
+			<div class="input" v-if="type==='pass'||type==='tel'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
 				<input type="text" placeholder="验证码" class="pass_ipt">
 				<p class="send_btn">发送</p>
 			</div>
-			<div class="input">
+			<div class="input"  v-if="type!=='tel'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
 				<input type="password" placeholder="请输入密码">
 			</div>
-			<div class="input" v-if="registerStatus||passwordStatus">
+			<div class="input" v-if="type==='reg'||type==='pass'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
 				<input type="password" placeholder="请输入确认密码">
 			</div>
-			<div class="login_btn">{{registerStatus?'注 册':passwordStatus?'立即找回':'登 录'}}</div>
-			<div class="action flex" v-if="!passwordStatus">
-				<p class="register" @click="handleRegister">{{registerStatus?'去登录':'注册账号'}}</p>
-				<p class="password" @click="handlePassword">忘记密码？</p>
+			<div class="login_btn" @click="handleSubmit(type)">{{type==='reg'?'注 册':type==='pass'?'立即找回':type==='tel'?'绑定':'登 录'}}</div>
+			<div class="action flex" v-if="type!=='pass'&&type!=='tel'">
+				<p class="register" @click="handleChangeRegister">{{type==='reg'?'去登录':'注册账号'}}</p>
+				<p class="password" @click="handleChangePassword">忘记密码？</p>
 			</div>
-			<p class="weixin_box" v-if="!passwordStatus">
+			<p class="weixin_box" v-if="type!=='pass'&&type!=='tel'">
 				<uni-icons type="weixin" size="30" color="#5ccc84"></uni-icons>
 			</p>
-			<div class="last" v-if="!registerStatus&&!passwordStatus">
+			<div class="last" v-if="type==='login'">
 				<checkbox/><text></text>
 				<p>已阅读并同意用户协议&隐私声明</p>
 			</div>
@@ -45,19 +45,24 @@
 	export default {
 		data() {
 			return {
-				registerStatus:false,
-				passwordStatus:false
+				type:'login'
 			}
 		},
 		methods: {
 			// 判断是否为注册状态
-			handleRegister(){
-				this.registerStatus=!this.registerStatus
+			handleChangeRegister(){
+				this.type = this.type === 'login' ? 'reg' : 'login'
 			},
 			// 判断是否为找回密码状态
-			handlePassword(){
-				this.registerStatus=false
-				this.passwordStatus=!this.passwordStatus
+			handleChangePassword(){
+				this.type = this.type === 'reg'||this.type === 'login'? 'pass' : ''
+			},
+			// 点击提交按钮事件
+			handleSubmit(type){
+				// // 切换到绑定手机号状态
+				// if(type==='login'){
+				// 	this.type='tel'
+				// }
 			}
 		}
 	}
