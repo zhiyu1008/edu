@@ -27,7 +27,8 @@
 				<input type="password" v-model="loginForm.repassword" placeholder="请输入确认密码">
 			</div>
 			<div class="login_btn" @click="handleSubmit(type)">
-				{{type==='reg'?'注 册':type==='pass'?'立即找回':type==='tel'?'绑定':'登 录'}}</div>
+				{{type==='reg'?'注 册':type==='pass'?'立即找回':type==='tel'?'绑定':'登 录'}}
+			</div>
 			<div class="action flex" v-if="type!=='pass'&&type!=='tel'">
 				<p class="register" @click="handleChangeRegister">{{type==='reg'?'去登录':'注册账号'}}</p>
 				<p class="password" @click="handleChangePassword">忘记密码？</p>
@@ -36,7 +37,11 @@
 				<uni-icons type="weixin" size="30" color="#5ccc84"></uni-icons>
 			</p>
 			<div class="last" v-if="type==='login'">
-				<checkbox :checked="check" color="#7fd49e" /><text></text>
+				<checkbox-group @change="handleCheckboxStatus">
+					<label class="text-light-muted">
+						<checkbox :checked="check" color="#7fd49e" /><text></text>
+					</label>
+				</checkbox-group>
 				<p>已阅读并同意用户协议&隐私声明</p>
 			</div>
 		</div>
@@ -44,8 +49,12 @@
 </template>
 <script>
 	import UserApi from '@/api/user.js'
-	// 引入通用的封装文件
-	import {c,$loading,$toast} from '@/utils/general.js'
+	// 引入封装的通用文件
+	import {
+		c,
+		$loading,
+		$toast
+	} from '@/utils/general.js'
 	export default {
 		data() {
 			return {
@@ -80,43 +89,63 @@
 					'pass' ? this.handlePass() : this.handleTel()
 			},
 			// 清空表单功能
-			resetForm(){
-				this.loginForm={
-					username:'',
-					password:"",
-					repassword:''
+			resetForm() {
+				this.loginForm = {
+					username: '',
+					password: "",
+					repassword: ''
 				}
 			},
 			// 注册功能
-			async handleRegister(){
-				try{
-					const data=this.loadsh.cloneDeep(this.loginForm)
-					const response=await UserApi.userRegister(data)
+			async handleRegister() {
+				try {
+					const data = this.loadsh.cloneDeep(this.loginForm)
+					const response = await UserApi.userRegister(data)
 					// 返回值有statusCode的话，则是注册失败，反之，是注册成功
-					if(!response.statusCode){
+					if (!response.statusCode) {
 						$toast("注册成功")
-						this.type='login'
+						this.type = 'login'
 						this.resetForm()
 					}
-				}catch(err){
+				} catch (err) {
 					console.log(err)
+				} finally {
+					uni.hideLoading()
+				}
+			},
+			// 判断是否勾选协议
+			handleCheckboxStatus(event) {
+				this.check = Boolean(event.detail.value.length)
+			},
+			// 登录功能
+			async handleLogin() {
+				if(!this.check){
+					return $toast('请先阅读并同意用户协议&隐私声明')
+				}
+				try{
+					const data=this.loadsh.cloneDeep(this.loginForm)
+					delete data.repassword
+					const response=await UserApi.userLogin(data)
+					c(response)
+					this.resetForm()
+					uni.switchTab({
+						url:'/pages/tabbar/home/home'
+					})
+				}catch(err){
+					c(err)
 				}finally{
 					uni.hideLoading()
 				}
 			},
-			// 登录功能
-			handleLogin(){
-				alert("login")
-			},
 			// 绑定手机号功能
-			handleTel(){
+			handleTel() {
 				alert("tel")
 			},
 			// 找回密码功能
-			handlePass(){
+			handlePass() {
 				alert("pass")
 			}
-			
+
 		}
 	}
 </script>
