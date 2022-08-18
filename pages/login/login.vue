@@ -7,7 +7,7 @@
 			<p class="login">{{type==='reg'?'注 册':type==='pass'?'找回密码':type==='tel'?'绑定手机号':'登 录'}}</p>
 			<div class="input" v-if="type!=='pass'&&type!=='tel'">
 				<uni-icons type="person" class="icon"></uni-icons>
-				<input type="text" placeholder="请输入用户名">
+				<input type="text" v-model="loginForm.username" placeholder="请输入用户名">
 			</div>
 			<div class="input" v-if="type==='pass'||type==='tel'">
 				<uni-icons type="person" class="icon"></uni-icons>
@@ -18,15 +18,16 @@
 				<input type="text" placeholder="验证码" class="pass_ipt">
 				<p class="send_btn">发送</p>
 			</div>
-			<div class="input"  v-if="type!=='tel'">
+			<div class="input" v-if="type!=='tel'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
-				<input type="password" placeholder="请输入密码">
+				<input type="password" v-model="loginForm.password" placeholder="请输入密码">
 			</div>
 			<div class="input" v-if="type==='reg'||type==='pass'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
-				<input type="password" placeholder="请输入确认密码">
+				<input type="password" v-model="loginForm.repassword" placeholder="请输入确认密码">
 			</div>
-			<div class="login_btn" @click="handleSubmit(type)">{{type==='reg'?'注 册':type==='pass'?'立即找回':type==='tel'?'绑定':'登 录'}}</div>
+			<div class="login_btn" @click="handleSubmit(type)">
+				{{type==='reg'?'注 册':type==='pass'?'立即找回':type==='tel'?'绑定':'登 录'}}</div>
 			<div class="action flex" v-if="type!=='pass'&&type!=='tel'">
 				<p class="register" @click="handleChangeRegister">{{type==='reg'?'去登录':'注册账号'}}</p>
 				<p class="password" @click="handleChangePassword">忘记密码？</p>
@@ -35,44 +36,75 @@
 				<uni-icons type="weixin" size="30" color="#5ccc84"></uni-icons>
 			</p>
 			<div class="last" v-if="type==='login'">
-				<checkbox/><text></text>
+				<checkbox :checked="check" color="#7fd49e" /><text></text>
 				<p>已阅读并同意用户协议&隐私声明</p>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
+	import UserApi from '@/api/user.js'
 	export default {
 		data() {
 			return {
-				type:'login'
+				type: 'login',
+				loginForm: {
+					username: '',
+					password: '',
+					repassword: ''
+				},
+				check: false
 			}
 		},
 		methods: {
 			// 判断是否为注册状态
-			handleChangeRegister(){
+			handleChangeRegister() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
 			},
 			// 判断是否为找回密码状态
-			handleChangePassword(){
-				this.type = this.type === 'reg'||this.type === 'login'? 'pass' : ''
+			handleChangePassword() {
+				this.type = this.type === 'reg' || this.type === 'login' ? 'pass' : ''
 			},
 			// 点击提交按钮事件
-			handleSubmit(type){
+			handleSubmit(type) {
 				// // 切换到绑定手机号状态
 				// if(type==='login'){
 				// 	this.type='tel'
 				// }
+				// uni.showLoading({
+				// 	title: '提交中...',
+				// 	mask: false
+				// })
+				this.type === 'login' ? this.handleLogin() : this.type === 'reg' ? this.handleRegister() : this.type ===
+					'pass' ? this.handlePass() : this.handleTel()
+			},
+			// 注册功能
+			handleRegister(){
+				alert("reg")
+			},
+			// 登录功能
+			handleLogin(){
+				alert("login")
+			},
+			// 绑定手机号功能
+			handleTel(){
+				alert("tel")
+			},
+			// 找回密码功能
+			handlePass(){
+				alert("pass")
 			}
+			
 		}
 	}
 </script>
 
 <style>
-	.pass_ipt{
+	.pass_ipt {
 		width: 330rpx;
 	}
-	.send_btn{
+
+	.send_btn {
 		width: 200rpx;
 		background: #5ccc84;
 		height: 100rpx;
@@ -81,11 +113,13 @@
 		text-align: center;
 		color: #fff;
 	}
+
 	.box {
 		width: 100%;
 		height: 100%;
 		position: relative;
 	}
+
 	.nav {
 		width: 100%;
 		height: 230rpx;
@@ -93,10 +127,12 @@
 		box-sizing: border-box;
 		padding: 30rpx;
 	}
+
 	.nav span {
 		color: #fff;
 		font-size: 40rpx;
 	}
+
 	.login_box {
 		position: absolute;
 		bottom: 0;
@@ -109,11 +145,13 @@
 		box-sizing: border-box;
 		padding: 0 65rpx;
 	}
-	.login{
+
+	.login {
 		font-size: 45rpx;
 		margin: 65rpx 0 50rpx 0;
 	}
-	.input{
+
+	.input {
 		width: 620rpx;
 		height: 100rpx;
 		background: #f5f5f5;
@@ -121,10 +159,12 @@
 		display: flex;
 		align-items: center;
 	}
-	.icon{
+
+	.icon {
 		margin: 0 35rpx;
 	}
-	.login_btn{
+
+	.login_btn {
 		width: 620rpx;
 		height: 100rpx;
 		background: #5ccc84;
@@ -133,27 +173,32 @@
 		text-align: center;
 		border-radius: 10rpx;
 	}
-	.action{
+
+	.action {
 		margin: 60rpx 0 65rpx 0;
 		justify-content: space-between;
 	}
-	.register{
+
+	.register {
 		color: #5ccc84;
 	}
-	.password{
+
+	.password {
 		color: #999;
 	}
-	.weixin_box{
+
+	.weixin_box {
 		height: 95rpx;
 		border-radius: 50%;
 		width: 95rpx;
-		border: 1px solid #5ccc84 ;
+		border: 1px solid #5ccc84;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		margin-left: 257rpx;
 	}
-	.last{
+
+	.last {
 		display: flex;
 		margin-top: 40rpx;
 		font-size: 30rpx;

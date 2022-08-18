@@ -27,7 +27,7 @@
 </template>
 
 <script>
-	import ShopModel from '@/model/user.js'
+	import IndexApi from '@/api/index.js'
 	import indexSkeleton from "@/pages/tabbar/index/index-skeleton.vue"
 	export default {
 		data() {
@@ -66,7 +66,7 @@
 			},
 			// 获取首页数据
 			async getIndexData() {
-				const response = await ShopModel.getIndexData()
+				const response = await IndexApi.getIndexData()
 				this.bannerList = response[1].data
 				this.navData = response[2].data
 				this.latestGroup = response[5].data
@@ -74,12 +74,12 @@
 			},
 			// 获取优惠卷列表
 			async getCoupon() {
-				const response = await ShopModel.getCoupon()
+				const response = await IndexApi.getCoupon()
 				this.couponData = response
 			},
 			// 获取拼团数据
 			async getGroup() {
-				const response = await ShopModel.getGroup()
+				const response = await IndexApi.getGroup()
 				this.groupData = response.rows
 			},
 		}

@@ -1,5 +1,5 @@
 import Http from "@/utils/http.js";
-class ShopModel extends Http {
+class IndexApi extends Http {
   // 首页数据接口
   static getIndexData() {
     return Http.request({
@@ -19,4 +19,4 @@ class ShopModel extends Http {
     })
   }
 }
-export default ShopModel
+export default IndexApi
