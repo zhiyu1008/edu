@@ -45,7 +45,7 @@
 <script>
 	import UserApi from '@/api/user.js'
 	// 引入通用的封装文件
-	import {c} from '@/utils/general.js'
+	import {c,$loading,$toast} from '@/utils/general.js'
 	export default {
 		data() {
 			return {
@@ -63,7 +63,6 @@
 			handleChangeRegister() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
 				this.resetForm()
-				c('00000000000000')
 			},
 			// 判断是否为找回密码状态
 			handleChangePassword() {
@@ -76,10 +75,7 @@
 				// if(type==='login'){
 				// 	this.type='tel'
 				// }
-				uni.showLoading({
-					title: '提交中...',
-					mask: false
-				})
+				$loading('提交中...')
 				this.type === 'login' ? this.handleLogin() : this.type === 'reg' ? this.handleRegister() : this.type ===
 					'pass' ? this.handlePass() : this.handleTel()
 			},
@@ -98,10 +94,7 @@
 					const response=await UserApi.userRegister(data)
 					// 返回值有statusCode的话，则是注册失败，反之，是注册成功
 					if(!response.statusCode){
-						uni.showToast({
-							title:"注册成功",
-							icon:'none'
-						})
+						$toast("注册成功")
 						this.type='login'
 						this.resetForm()
 					}
