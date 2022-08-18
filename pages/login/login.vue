@@ -44,6 +44,8 @@
 </template>
 <script>
 	import UserApi from '@/api/user.js'
+	// 引入通用的封装文件
+	import {c} from '@/utils/general.js'
 	export default {
 		data() {
 			return {
@@ -61,6 +63,7 @@
 			handleChangeRegister() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
 				this.resetForm()
+				c('00000000000000')
 			},
 			// 判断是否为找回密码状态
 			handleChangePassword() {
