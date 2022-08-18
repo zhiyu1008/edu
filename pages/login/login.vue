@@ -81,10 +81,6 @@
 			},
 			// 点击提交按钮事件
 			handleSubmit(type) {
-				// // 切换到绑定手机号状态
-				// if(type==='login'){
-				// 	this.type='tel'
-				// }
 				$loading('提交中...')
 				this.type === 'login' ? this.handleLogin() : this.type === 'reg' ? this.handleRegister() : this.type ===
 					'pass' ? this.handlePass() : this.handleTel()
@@ -127,11 +123,8 @@
 					const data=this.loadsh.cloneDeep(this.loginForm)
 					delete data.repassword
 					const response=await UserApi.userLogin(data)
-					c(response)
 					this.resetForm()
-					uni.switchTab({
-						url:'/pages/tabbar/home/home'
-					})
+					this.$store.dispatch('user/setUser',response)
 				}catch(err){
 					c(err)
 				}finally{
