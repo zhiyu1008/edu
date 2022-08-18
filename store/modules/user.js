@@ -1,17 +1,31 @@
 import {
-  getItem,
-  removeItem,
-  setItem
+	getItem,
+	removeItem,
+	setItem
 } from '../../utils/storage'
-import {TOKEN_KEY, USER_KEY} from "@/config/storage-key"
+import {
+	TOKEN_KEY,
+	USER_KEY
+} from "@/config/storage-key"
 export default {
-  namespaced: true,
-  state: {
-    // user : JSON.parse(getItem(USER_KEY) || "{}") 
-  },
-  mutations: {
-    
-  },
-  actions: {
-  }
+	namespaced: true,
+	state: {
+		token : uni.getStorageSync(TOKEN_KEY) || "",
+		user: JSON.parse(getItem(USER_KEY) || "{}")
+	},
+	mutations: {
+		setUser(state, user) {
+			state.token = user.token
+			state.user = user
+			uni.setStorageSync(TOKEN_KEY, user.token)
+			uni.setStorageSync(USER_KEY, JSON.stringify(user))
+		}
+	},
+	actions: {
+		setUser({
+			commit
+		}, payload) {
+			commit("setUser", payload)
+		}
+	}
 }
