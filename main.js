@@ -11,10 +11,14 @@ Object.assign(Vue.prototype, {
 import _ from 'lodash'
 Vue.prototype.loadsh=_
 
+// 引入vuex
+import store from "@/store/index"
+
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
-    ...App
+    ...App,
+	store
 })
 app.$mount()
 // #endif
