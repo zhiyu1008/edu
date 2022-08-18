@@ -29,7 +29,7 @@ class Http {
       if (response.statusCode === 401) {
         return
       }
-      Http._showError(response.data.code, response.data.msg)
+      Http._showError(response.data.code, response.data.data)
       return response
     } catch (error) {
 
@@ -38,9 +38,9 @@ class Http {
     }
   }
 
-  static _showError(code, msg) {
+  static _showError(code, data) {
     let title = ''
-    title = exceptionMessage[code] || msg || '发生未知错误'
+    title = exceptionMessage[code] || data || '发生未知错误'
     uni.showToast({
       title,
       icon: 'none',

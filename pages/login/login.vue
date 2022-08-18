@@ -60,10 +60,12 @@
 			// 判断是否为注册状态
 			handleChangeRegister() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
+				this.resetForm()
 			},
 			// 判断是否为找回密码状态
 			handleChangePassword() {
 				this.type = this.type === 'reg' || this.type === 'login' ? 'pass' : ''
+				this.resetForm()
 			},
 			// 点击提交按钮事件
 			handleSubmit(type) {
@@ -91,13 +93,15 @@
 				try{
 					const data=this.loadsh.cloneDeep(this.loginForm)
 					const response=await UserApi.userRegister(data)
-					console.log(response)
-					uni.showToast({
-						title:"注册成功",
-						icon:'none'
-					})
-					this.type='login'
-					this.resetForm()
+					// 返回值有statusCode的话，则是注册失败，反之，是注册成功
+					if(!response.statusCode){
+						uni.showToast({
+							title:"注册成功",
+							icon:'none'
+						})
+						this.type='login'
+						this.resetForm()
+					}
 				}catch(err){
 					console.log(err)
 				}finally{
@@ -122,109 +126,5 @@
 </script>
 
 <style>
-	.pass_ipt {
-		width: 330rpx;
-	}
-
-	.send_btn {
-		width: 200rpx;
-		background: #5ccc84;
-		height: 100rpx;
-		border-radius: 5rpx;
-		line-height: 100rpx;
-		text-align: center;
-		color: #fff;
-	}
-
-	.box {
-		width: 100%;
-		height: 100%;
-		position: relative;
-	}
-
-	.nav {
-		width: 100%;
-		height: 230rpx;
-		background-image: linear-gradient(120deg, #3bfdaf, #70d6f2);
-		box-sizing: border-box;
-		padding: 30rpx;
-	}
-
-	.nav span {
-		color: #fff;
-		font-size: 40rpx;
-	}
-
-	.login_box {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: calc(100% - 200rpx);
-		border-radius: 30rpx 30rpx 0 0;
-		z-index: 999;
-		background: #fff;
-		box-sizing: border-box;
-		padding: 0 65rpx;
-	}
-
-	.login {
-		font-size: 45rpx;
-		margin: 65rpx 0 50rpx 0;
-	}
-
-	.input {
-		width: 620rpx;
-		height: 100rpx;
-		background: #f5f5f5;
-		margin-bottom: 50rpx;
-		display: flex;
-		align-items: center;
-	}
-
-	.icon {
-		margin: 0 35rpx;
-	}
-
-	.login_btn {
-		width: 620rpx;
-		height: 100rpx;
-		background: #5ccc84;
-		color: #fff;
-		line-height: 100rpx;
-		text-align: center;
-		border-radius: 10rpx;
-	}
-
-	.action {
-		margin: 60rpx 0 65rpx 0;
-		justify-content: space-between;
-	}
-
-	.register {
-		color: #5ccc84;
-	}
-
-	.password {
-		color: #999;
-	}
-
-	.weixin_box {
-		height: 95rpx;
-		border-radius: 50%;
-		width: 95rpx;
-		border: 1px solid #5ccc84;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-left: 257rpx;
-	}
-
-	.last {
-		display: flex;
-		margin-top: 40rpx;
-		font-size: 30rpx;
-		color: #999;
-		margin-left: 80rpx;
-	}
+	@import url('@/style/login.css');
 </style>
