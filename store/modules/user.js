@@ -10,8 +10,8 @@ import {
 export default {
 	namespaced: true,
 	state: {
-		token : uni.getStorageSync(TOKEN_KEY) || "",
-		user: JSON.parse(getItem(USER_KEY) || "{}")
+		token : getItem(TOKEN_KEY) || "",
+		user: getItem(USER_KEY) || "{}"
 	},
 	mutations: {
 		setUser(state, user) {

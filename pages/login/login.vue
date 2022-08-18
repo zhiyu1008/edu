@@ -56,10 +56,14 @@
 		$toast
 	} from '@/utils/general.js'
 	import {setItem,getItem} from '../../utils/storage.js'
+	import {
+		TOKEN_KEY,
+		USER_KEY
+	} from "@/config/storage-key"
 	export default {
 		data() {
 			return {
-				type: 'login',
+				type:getItem(USER_KEY).type||'login',
 				loginForm: {
 					username: '',
 					password: '',
@@ -124,12 +128,20 @@
 					delete data.repassword
 					const response=await UserApi.userLogin(data)
 					this.resetForm()
+					// 切换手机页面的关键
+					response.type=String('tel')
 					this.$store.dispatch('user/setUser',response)
+					this.handleToTel()
 				}catch(err){
 					c(err)
 				}finally{
 					uni.hideLoading()
 				}
+			},
+			// 登录后切换到绑定手机号页面
+			handleToTel(){
+				const user=this.$store.getters.user
+				this.type=getItem(USER_KEY).type
 			},
 			// 绑定手机号功能
 			handleTel() {
