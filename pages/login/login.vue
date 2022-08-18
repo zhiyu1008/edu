@@ -71,23 +71,38 @@
 				// if(type==='login'){
 				// 	this.type='tel'
 				// }
-				// uni.showLoading({
-				// 	title: '提交中...',
-				// 	mask: false
-				// })
+				uni.showLoading({
+					title: '提交中...',
+					mask: false
+				})
 				this.type === 'login' ? this.handleLogin() : this.type === 'reg' ? this.handleRegister() : this.type ===
 					'pass' ? this.handlePass() : this.handleTel()
 			},
+			// 清空表单功能
+			resetForm(){
+				this.loginForm={
+					username:'',
+					password:"",
+					repassword:''
+				}
+			},
 			// 注册功能
 			async handleRegister(){
-				const data=this.loadsh.cloneDeep(this.loginForm)
-				// try{
-					
-				// }catch(err){
-				// 	console.log(err)
-				// }finally{
-				// 	uni.hideLoading()
-				// }
+				try{
+					const data=this.loadsh.cloneDeep(this.loginForm)
+					const response=await UserApi.userRegister(data)
+					console.log(response)
+					uni.showToast({
+						title:"注册成功",
+						icon:'none'
+					})
+					this.type='login'
+					this.resetForm()
+				}catch(err){
+					console.log(err)
+				}finally{
+					uni.hideLoading()
+				}
 			},
 			// 登录功能
 			handleLogin(){
