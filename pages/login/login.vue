@@ -113,8 +113,7 @@
 				try {
 					const data = this.loadsh.cloneDeep(this.loginForm)
 					const response = await UserApi.userRegister(data)
-					// 返回值有statusCode的话，则是注册失败，反之，是注册成功
-					if (!response.statusCode) {
+					if(response.username){
 						$toast("注册成功")
 						this.type = 'login'
 						this.resetForm()

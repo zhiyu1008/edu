@@ -11,6 +11,7 @@ export const $loading =(title)=>{
 export const $toast =(title)=>{
 	uni.showToast({
 		title,
-		icon:'none'
+		icon:'none',
+		duration: 3000
 	})
 } 

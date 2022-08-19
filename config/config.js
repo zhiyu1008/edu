@@ -3,8 +3,9 @@ const APIConfig = {
     baseURL: 'http://demonuxtapi.dishait.cn/mobile'
   },
   'api2': {
-    baseURL: 'http://weixin.itying.com'
-  }
+    baseURL: ''
+  },
+  appid:'bd9d01ecc75dbbaaefce'
 }
 // 路径白名单
 const pathWhiteList = [
@@ -13,12 +14,7 @@ const pathWhiteList = [
   '/401',
   '/setting'
 ]
-const field = {
-  loginCredentials: 'token',
-  userInfoKey: 'userInfo'
-}
 export {
   APIConfig,
-  pathWhiteList,
-  field
+  pathWhiteList
 }
