@@ -12,7 +12,7 @@ class Http {
 	// 请求拦截器
 	static async _beforeRequest(config) {
 		// 获取vuex中token
-		const token = store.state.token
+		const token = store.getters.token
 		if (token) config.header.token = token
 		config.header.appid = APIConfig.appid
 		return config

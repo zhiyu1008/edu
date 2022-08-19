@@ -114,6 +114,10 @@
 					username: '',
 					password: "",
 					repassword: ''
+				},
+				this.telForm = {
+					phone: '',
+					code: ''
 				}
 			},
 			// 注册功能
@@ -162,16 +166,24 @@
 				const user = this.$store.getters.user
 				this.type = getItem(USER_KEY).type
 			},
-			// 清空手机页面输入框
-			resetForm() {
-				this.telForm = {
-					phone: '',
-					code: ''
-				}
-			},
 			// 绑定手机号功能
-			handleTel() {
-
+			async handleTel() {
+				try{
+					const response =await UserApi.userBindTel(this.telForm)
+					if(response==='ok'){
+						$toast('绑定成功')
+						this.resetForm()
+						setTimeout(()=>{
+							uni.switchTab({
+								url:'/pages/tabbar/home/home'
+							})
+						},350)
+					}
+				}catch(err){
+					c(err)
+				}finally{
+					uni.hideLoading()
+				}
 			},
 			// 找回密码功能
 			handlePass() {

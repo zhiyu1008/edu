@@ -27,7 +27,7 @@ class UserApi extends Http {
   // 绑定手机号接口
   static userBindTel(data) {
     return Http.request({
-  		url: '/ind_mobile',
+  		url: '/bind_mobile',
   		method:'POST',
   		data
     })
