@@ -11,12 +11,13 @@
 			</div>
 			<div class="input" v-if="type==='pass'||type==='tel'">
 				<uni-icons type="person" class="icon"></uni-icons>
-				<input type="text" placeholder="请输入手机号">
+				<input type="text" v-model="telForm.phone" placeholder="请输入手机号">
 			</div>
 			<div class="input" v-if="type==='pass'||type==='tel'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
-				<input type="text" placeholder="验证码" class="pass_ipt">
-				<p class="send_btn">发送</p>
+				<input type="text" v-model="telForm.code" placeholder="验证码" class="pass_ipt">
+				<!-- 手机验证码发送组件 -->
+				<i-code-button :phone="telForm.phone" @get="getCode"></i-code-button>
 			</div>
 			<div class="input" v-if="type!=='tel'">
 				<uni-icons type="locked-filled" class="icon"></uni-icons>
@@ -55,7 +56,10 @@
 		$loading,
 		$toast
 	} from '@/utils/general.js'
-	import {setItem,getItem} from '../../utils/storage.js'
+	import {
+		setItem,
+		getItem
+	} from '../../utils/storage.js'
 	import {
 		TOKEN_KEY,
 		USER_KEY
@@ -63,30 +67,30 @@
 	export default {
 		data() {
 			return {
-				type:getItem(USER_KEY).type||'login',
+				type: getItem(USER_KEY).type || 'login',
 				loginForm: {
 					username: '',
 					password: '',
 					repassword: ''
 				},
-				telForm:{
-					phone:'',
-					code:''
+				telForm: {
+					phone: '',
+					code: ''
 				},
 				check: false
 			}
 		},
 		methods: {
 			// 返回事件
-			goback(){
-				if(this.type!=='pass'){
+			goback() {
+				if (this.type !== 'pass') {
 					uni.switchTab({
-						url:'/pages/tabbar/home/home'
+						url: '/pages/tabbar/home/home'
 					})
-				}else{
-					this.type='login'
+				} else {
+					this.type = 'login'
 				}
-				
+
 			},
 			// 判断是否为注册状态
 			handleChangeRegister() {
@@ -117,7 +121,7 @@
 				try {
 					const data = this.loadsh.cloneDeep(this.loginForm)
 					const response = await UserApi.userRegister(data)
-					if(response.username){
+					if (response.username) {
 						$toast("注册成功")
 						this.type = 'login'
 						this.resetForm()
@@ -134,33 +138,40 @@
 			},
 			// 登录功能
 			async handleLogin() {
-				if(!this.check){
+				if (!this.check) {
 					return $toast('请先阅读并同意用户协议&隐私声明')
 				}
-				try{
-					const data=this.loadsh.cloneDeep(this.loginForm)
+				try {
+					const data = this.loadsh.cloneDeep(this.loginForm)
 					delete data.repassword
-					const response=await UserApi.userLogin(data)
+					const response = await UserApi.userLogin(data)
 					this.resetForm()
 					$toast('登录成功')
 					// 切换手机页面的关键
-					response.type=String('tel')
-					this.$store.dispatch('user/setUser',response)
+					response.type = String('tel')
+					this.$store.dispatch('user/setUser', response)
 					this.handleToTel()
-				}catch(err){
+				} catch (err) {
 					c(err)
-				}finally{
+				} finally {
 					uni.hideLoading()
 				}
 			},
 			// 登录后切换到绑定手机号页面
-			handleToTel(){
-				const user=this.$store.getters.user
-				this.type=getItem(USER_KEY).type
+			handleToTel() {
+				const user = this.$store.getters.user
+				this.type = getItem(USER_KEY).type
+			},
+			// 清空手机页面输入框
+			resetForm() {
+				this.telForm = {
+					phone: '',
+					code: ''
+				}
 			},
 			// 绑定手机号功能
 			handleTel() {
-				
+
 			},
 			// 找回密码功能
 			handlePass() {
