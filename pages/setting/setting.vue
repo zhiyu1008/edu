@@ -1,8 +1,8 @@
 <template>
 	<view class="box">
-		<div class="item">
+		<div class="item" @click="handleSecurity">
 			<p>账号安全</p>
-			<uni-icons type="right" @click="$goBack(2,'/pages/login/login')"></uni-icons>
+			<uni-icons type="right"></uni-icons>
 		</div>
 		<div class="item">
 			<p>清除缓存</p>
@@ -15,20 +15,36 @@
 		<div class="item">
 			<p>当前版本</p>
 			<span>1.00</span>
+			
 		</div>
-		<div class="logout" v-if="token">退出登录</div>
+		<div class="logout">退出登录</div>
 	</view>
 </template>
 
 <script>
+	import {getItem} from '@/utils/storage.js'
 	export default {
 		data() {
 			return {
-				token:''
+				userStatus:''
 			}
 		},
 		methods: {
-			
+			// 点击账号安全事件
+			handleSecurity(){
+				if(this.userStatus==='noLogin'){
+					uni.navigateTo({
+						url:'/pages/login/login'
+					})
+				}else{
+					uni.navigateTo({
+						url:'/pages/changePassword/changePassword'
+					})
+				}
+			}
+		},
+		onShow() {
+			this.userStatus = getItem('userStatus')
 		}
 	}
 </script>

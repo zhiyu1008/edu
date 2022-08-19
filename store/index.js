@@ -2,7 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 Vue.use(Vuex)
 import user from '@/store/modules/user.js'
-import getters from './getters'
+import getters from '@/store/getters.js'
 
 const store=new Vuex.Store({
 	getters,

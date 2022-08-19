@@ -46,7 +46,15 @@
 				"enablePullDownRefresh": false
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/changePassword/changePassword",
+            "style": {
+            	"navigationBarTitleText": "修改密码",
+            	"navigationBarBackgroundColor": "#fff",
+            	"enablePullDownRefresh": false
+            }
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uniapp在线教育",
