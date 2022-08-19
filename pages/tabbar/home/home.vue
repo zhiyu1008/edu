@@ -5,13 +5,13 @@
 				<m-nav></m-nav>
 				<div class="user">
 					<div class="user_info"  @click="$goBack(2,'/pages/login/login')">
-						<div class="face"></div>
+						<image class="face"></image>
 						<div class="desc">
-							<h3>立即登录</h3>
-							<p>登录解锁更多功能</p>
+							<h3>{{userStatus!=='noLogin'?user.username:'立即登录'}}</h3>
+							<p>{{userStatus!=='noLogin'?'暂无描述':'登录解锁更多功能'}}</p>
 						</div>
 					</div>
-					<span v-if="flag">000</span>
+					<uni-icons v-if="userStatus!=='noLogin'" type="phone" color="#fff" size="25"></uni-icons>
 				</div>
 				<m-action1></m-action1>
 			</div>
@@ -21,13 +21,22 @@
 </template>
 
 <script>
+	import {userStatus} from '../../../utils/userStatus.js'
+	import {getItem} from '@/utils/storage.js'
 	export default {
 		data() {
 			return {
-				flag:false
+				userStatus:'',
+				user:''
 			}
 		},
+		onShow() {
+			userStatus()
+			this.userStatus=getItem('userStatus')
+			this.user=getItem('user')
+		},
 		methods: {
+			
 		}
 	}
 </script>
