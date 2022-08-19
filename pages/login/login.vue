@@ -152,7 +152,7 @@
 					this.resetForm()
 					$toast('登录成功')
 					this.$store.dispatch('user/setUser', response)
-					// 登录后返回数据没有phone切换到手机页面
+					// 登录后返回的数据没有phone切换到手机页面
 					if(response.phone===null){
 						response.type = String('tel')
 						this.handleToTel()
