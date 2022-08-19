@@ -16,5 +16,21 @@ class UserApi extends Http {
 		data
     })
   }
+  // 获取手机验证码接口
+  static getCode(data) {
+    return Http.request({
+  		url: '/get_captcha',
+  		method:'POST',
+  		data
+    })
+  }
+  // 绑定手机号接口
+  static userBindTel(data) {
+    return Http.request({
+  		url: '/ind_mobile',
+  		method:'POST',
+  		data
+    })
+  }
 }
 export default UserApi

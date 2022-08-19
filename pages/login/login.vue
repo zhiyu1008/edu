@@ -69,6 +69,10 @@
 					password: '',
 					repassword: ''
 				},
+				telForm:{
+					phone:'',
+					code:''
+				},
 				check: false
 			}
 		},
@@ -156,7 +160,7 @@
 			},
 			// 绑定手机号功能
 			handleTel() {
-				alert("tel")
+				
 			},
 			// 找回密码功能
 			handlePass() {
