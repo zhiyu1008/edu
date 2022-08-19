@@ -1,7 +1,7 @@
 <template>
 	<div class="box">
 		<div class="nav">
-			<uni-icons type="back" color="#fff" size="20" @click="$goBack(1,1)"></uni-icons>
+			<uni-icons type="back" color="#fff" size="20" @click="goback"></uni-icons>
 		</div>
 		<div class="login_box">
 			<p class="login">{{type==='reg'?'注 册':type==='pass'?'找回密码':type==='tel'?'绑定手机号':'登 录'}}</p>
@@ -73,6 +73,17 @@
 			}
 		},
 		methods: {
+			// 返回事件
+			goback(){
+				if(this.type!=='pass'){
+					uni.switchTab({
+						url:'/pages/tabbar/home/home'
+					})
+				}else{
+					this.type='login'
+				}
+				
+			},
 			// 判断是否为注册状态
 			handleChangeRegister() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
@@ -128,6 +139,7 @@
 					delete data.repassword
 					const response=await UserApi.userLogin(data)
 					this.resetForm()
+					$toast('登录成功')
 					// 切换手机页面的关键
 					response.type=String('tel')
 					this.$store.dispatch('user/setUser',response)
