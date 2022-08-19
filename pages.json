@@ -37,6 +37,14 @@
 				"navigationBarBackgroundColor": "#fff",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/editUser/editUser",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"navigationBarBackgroundColor": "#fff",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	"globalStyle": {

@@ -4,14 +4,14 @@
 			<div class="nav">
 				<m-nav></m-nav>
 				<div class="user">
-					<div class="user_info"  @click="$goBack(2,'/pages/login/login')">
+					<div class="user_info"  @click="handleAvatar">
 						<image class="face"></image>
 						<div class="desc">
 							<h3>{{userStatus!=='noLogin'?user.username:'立即登录'}}</h3>
 							<p>{{userStatus!=='noLogin'?'暂无描述':'登录解锁更多功能'}}</p>
 						</div>
 					</div>
-					<uni-icons v-if="userStatus!=='noLogin'" type="phone" color="#fff" size="25"></uni-icons>
+					<uni-icons v-if="userStatus!=='noLogin'" @click="handleAvatar" type="phone" color="#fff" size="25"></uni-icons>
 				</div>
 				<m-action1></m-action1>
 			</div>
@@ -36,7 +36,18 @@
 			this.user=getItem('user')
 		},
 		methods: {
-			
+			// 点击用户头像事件
+			handleAvatar(){
+				if(this.userStatus==='success'){
+					uni.navigateTo({
+						url:'/pages/editUser/editUser'
+					})
+				}else{
+					uni.navigateTo({
+						url:'/pages/login/login'
+					})
+				}
+			}
 		}
 	}
 </script>
