@@ -151,26 +151,22 @@
 					const response = await UserApi.userLogin(data)
 					this.resetForm()
 					$toast('登录成功')
-					this.$store.dispatch('user/setUser', response)
 					// 登录后返回的数据没有phone切换到手机页面
 					if(response.phone===null){
 						response.type = String('tel')
-						this.handleToTel()
+						// 登录后切换到手机号页面
+						this.type='tel'
 					}else{
 						uni.switchTab({
 							url:'/pages/tabbar/home/home'
 						})
 					}
+					this.$store.dispatch('user/setUser', response)
 				} catch (err) {
 					c(err)
 				} finally {
 					uni.hideLoading()
 				}
-			},
-			// 登录后切换到绑定手机号页面
-			handleToTel() {
-				const user = this.$store.getters.user
-				this.type = getItem(USER_KEY).type
 			},
 			// 绑定手机号功能
 			async handleTel() {
