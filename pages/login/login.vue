@@ -151,10 +151,16 @@
 					const response = await UserApi.userLogin(data)
 					this.resetForm()
 					$toast('登录成功')
-					// 切换手机页面的关键
-					response.type = String('tel')
 					this.$store.dispatch('user/setUser', response)
-					this.handleToTel()
+					// 登录后返回数据没有phone切换到手机页面
+					if(response.phone===null){
+						response.type = String('tel')
+						this.handleToTel()
+					}else{
+						uni.switchTab({
+							url:'/pages/tabbar/home/home'
+						})
+					}
 				} catch (err) {
 					c(err)
 				} finally {
