@@ -65,11 +65,11 @@
 </script>
 
 <style>
-	.li{
-		list-style: none;
-		width: 25%;
-		text-align: center;
-	}
+.li{
+	list-style: none;
+	width: 25%;
+	text-align: center;
+}
 .action{
 		height: 150rpx;
 		width: 700rpx;

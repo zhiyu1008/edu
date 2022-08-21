@@ -86,6 +86,22 @@
             	"enablePullDownRefresh": false
             }
         }
+        ,{
+            "path" : "pages/my-post/my-post",
+            "style": {
+            	"navigationBarTitleText": "我的帖子",
+            	"navigationBarBackgroundColor": "#fff",
+            	"enablePullDownRefresh": false
+            }
+        },
+		{
+		    "path" : "pages/my-book/my-book",
+		    "style": {
+		    	"navigationBarTitleText": "我的电子书",
+		    	"navigationBarBackgroundColor": "#fff",
+		    	"enablePullDownRefresh": false
+		    }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
