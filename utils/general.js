@@ -1,3 +1,4 @@
+import store from '@/store'
 // 对console.log()进行封装
 export const c = console.log.bind(document)
 // 对uni.showloading()的封装
@@ -23,13 +24,15 @@ export const $model = (title,value,action) => {
 		success: (res) => {
 			if (res.confirm) {
 				console.log('用户点击确定');
-				
-				// this.$store.dispatch('user/logout')
+				// 退出登录事件
+				if(action==='logout'){
+					store.dispatch('user/logout')
+					uni.navigateTo({
+						url:'/pages/login/login'
+					})
+				}
 			} else if (res.cancel) {
 				console.log('用户点击取消');
-				if(action==='logout'){
-					console.log('000')
-				}
 			}
 		}
 	})
