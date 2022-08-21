@@ -32,5 +32,45 @@ class UserApi extends Http {
   		data
     })
   }
+  // 退出登录接口
+  static userLogout(data) {
+    return Http.request({
+  		url: '/logout',
+  		method:'POST',
+  		data
+    })
+  }
+  // 找回密码接口
+  static userForget(data) {
+    return Http.request({
+  		url: '/forget',
+  		method:'POST',
+  		data
+    })
+  }
+  // 修改资料接口
+  static userEdit(data) {
+    return Http.request({
+  		url: '/update_info',
+  		method:'POST',
+  		data
+    })
+  }
+  // 修改密码接口
+  static userChangePassword(data) {
+    return Http.request({
+  		url: '/update_password',
+  		method:'POST',
+  		data
+    })
+  }
+  // 微信app/小程序/H5登录接口
+  static userBindTel(data) {
+    return Http.request({
+  		url: '/weixin_login',
+  		method:'POST',
+  		data
+    })
+  }
 }
 export default UserApi
