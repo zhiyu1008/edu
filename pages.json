@@ -54,6 +54,30 @@
             	"enablePullDownRefresh": false
             }
         }
+        ,{
+            "path" : "pages/order-list/order-list",
+            "style": {
+            	"navigationBarTitleText": "我的订单",
+            	"navigationBarBackgroundColor": "#fff",
+            	"enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/msg-list/msg-list",
+            "style": {
+            	"navigationBarTitleText": "消息列表",
+            	"navigationBarBackgroundColor": "#fff",
+            	"enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/star-list/star-list",
+           "style": {
+           	"navigationBarTitleText": "收藏列表",
+           	"navigationBarBackgroundColor": "#fff",
+           	"enablePullDownRefresh": false
+           }
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

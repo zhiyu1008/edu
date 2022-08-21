@@ -13,9 +13,9 @@
 					</div>
 					<uni-icons v-if="userStatus!=='noLogin'" @click="handleAvatar" type="phone" color="#fff" size="25"></uni-icons>
 				</div>
-				<m-action1></m-action1>
+				<m-action1 :userStatus=userStatus></m-action1>
 			</div>
-			<m-action2></m-action2>
+			<m-action2 :userStatus=userStatus></m-action2>
 		</view>
 	</view>
 </template>
