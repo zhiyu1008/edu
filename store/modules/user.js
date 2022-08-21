@@ -29,6 +29,7 @@ export default {
 		}, payload) {
 			commit("setUser", payload)
 		},
+		// 退出用户登录
 		async logout({
 			commit
 		}) {

@@ -35,7 +35,7 @@
 		methods: {
 			// 点击账号安全事件
 			handleSecurity() {
-				if (this.userStatus === 'noLogin') {
+				if (this.userStatus !== 'success') {
 					uni.navigateTo({
 						url: '/pages/login/login'
 					})

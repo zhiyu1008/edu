@@ -16,6 +16,7 @@ export const $toast = (title) => {
 		duration: 3000
 	})
 }
+// 对uni.showModal进行封装
 // 确认提示框
 export const $model = (title,value,action) => {
 	uni.showModal({
