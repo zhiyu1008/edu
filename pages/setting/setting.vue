@@ -17,7 +17,7 @@
 			<span>1.00</span>
 			
 		</div>
-		<div class="logout">退出登录</div>
+		<div class="logout" v-if="userStatus!=='noLogin'">退出登录</div>
 	</view>
 </template>
 
