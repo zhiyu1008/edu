@@ -78,6 +78,14 @@
            	"enablePullDownRefresh": false
            }
         }
+        ,{
+            "path" : "pages/my-coupon/my-coupon",
+            "style": {
+            	"navigationBarTitleText": "我的优惠卷",
+            	"navigationBarBackgroundColor": "#fff",
+            	"enablePullDownRefresh": false
+            }
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

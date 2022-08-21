@@ -1,7 +1,7 @@
 <template>
 	<view class="list">
 		<view class="ul">
-			<view class="li">
+			<view class="li" @click="handleAction">
 				<div class="left">
 					<uni-icons custom-prefix="iconfont" color="#19b3f0" type="icon-wodeyouhuijuan" size="20"></uni-icons>
 					<p>我的优惠卷</p>
@@ -33,8 +33,23 @@
 				
 			}
 		},
+		props:{
+			userStatus:{
+				type:String
+			}
+		},
 		methods: {
-			
+			handleAction(){
+				if(this.userStatus!=='success'){
+					uni.navigateTo({
+						url:'/pages/login/login'
+					})
+				}else{
+					uni.navigateTo({
+						url:'/pages/my-coupon/my-coupon'
+					})
+				}
+			}
 		}
 	}
 </script>
