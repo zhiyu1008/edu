@@ -16,16 +16,20 @@ export const $toast = (title) => {
 	})
 }
 // 确认提示框
-export const $model = (value,title) => {
+export const $model = (title,value,action) => {
 	uni.showModal({
 		title,
 		content: value,
 		success: (res) => {
 			if (res.confirm) {
 				console.log('用户点击确定');
-				this.$store.dispatch('user/logout')
+				
+				// this.$store.dispatch('user/logout')
 			} else if (res.cancel) {
 				console.log('用户点击取消');
+				if(action==='logout'){
+					console.log('000')
+				}
 			}
 		}
 	})

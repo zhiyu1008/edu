@@ -47,7 +47,7 @@
 			},
 			// 退出登录事件
 			handleLogout() {
-				$model('是否要退出登录')
+				$model('','是否要退出登录','logout')
 			}
 		},
 		onShow() {
