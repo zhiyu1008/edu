@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="box">
+		<view class="box animate__animated animate__slideInDown">
 			<div class="nav">
 				<m-nav></m-nav>
 				<div class="user">
